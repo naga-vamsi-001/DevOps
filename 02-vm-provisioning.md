@@ -187,6 +187,78 @@ Used for SSH login without passwords.
 
 ---
 
+
+---
+
+## 📢 Public IP vs Private IP
+
+| Type        | Use Case             | Routable | Example           |
+|-------------|----------------------|----------|-------------------|
+| Public IP   | Internet communication | ✅ | 54.23.122.90      |
+| Private IP  | Internal networks      | ❌ | 192.168.1.100     |
+
+> Use NAT gateways or bastion hosts to connect securely across zones.
+
+---
+
+## 🔐 SSH into EC2 Using Key Pair
+
+To connect to your EC2 instance:
+
+```bash
+ssh -i ~/.ssh/my-key.pem ubuntu@<public-ip>
+```
+
+- `-i` specifies the path to your private key
+- The `.pem` file must be **secure**
+
+```bash
+chmod 600 ~/.ssh/my-key.pem
+```
+
+> Ensures only the owner can read/write the key file — preventing SSH from rejecting it due to open permissions.
+
+---
+
+## 🧱 What is a Binary?
+
+A binary is a **compiled program** that can run directly on your system (like `.exe`, `.bin`, `.out`).  
+Unlike scripts, binaries don’t need interpretation.
+
+> Think of it like a finished product — ready to execute immediately.
+
+---
+
+## 🔐 AWS CLI: Connect Using Access Keys
+
+### Step 1: Create Access Keys
+- Go to AWS Console → Your Profile → Security Credentials
+- Under “Access Keys”, click **Create Access Key**
+- Download the key ID and secret key
+
+### Step 2: Configure CLI
+```bash
+aws configure
+```
+
+Fill in:
+- AWS Access Key ID
+- AWS Secret Access Key
+- Region (e.g., us-east-1)
+- Output format (e.g., json)
+
+---
+
+## 🧰 DevOps Terminal Tools
+
+| Tool       | OS        | SSH | Tabs | GUI | File Transfer |
+|------------|-----------|-----|------|-----|----------------|
+| MobaXterm  | Windows   | ✅  | ✅   | ✅  | ✅ (SCP/SFTP)  |
+| iTerm2     | macOS     | ✅  | ✅   | ❌  | ❌             |
+| PuTTY      | Windows   | ✅  | ❌   | ❌  | ❌             |
+
+
+
 ## 🧠 Summary
 
 DevOps engineers manage resources efficiently by using:

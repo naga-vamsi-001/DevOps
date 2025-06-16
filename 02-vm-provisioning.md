@@ -145,6 +145,13 @@ Used for SSH login without passwords.
 | RSA     | Most common   |
 | ED25519 | Faster, modern alternative |
 
+
+## Public Key?
+
+ Automatically stored on the VM, when you launch it
+ Saved in ~/.ssh/authorized_keys on the instance
+ Used by the server to verify the user
+
 ---
 
 ## 📂 What is a Private Key File Type?

@@ -9,7 +9,7 @@ This document demonstrates a hands-on AWS project where a custom **VPC**, **EC2*
 ### Goal
 
 To create a fully functional virtual network using AWS VPC, configure subnets, route tables, EC2 instance, and secure it using NACLs and Security Groups.
-![alt text](image.png)
+![arch.png](./Images/vpc_network_project/arch.png)
 
 ---
 
@@ -34,14 +34,14 @@ To create a fully functional virtual network using AWS VPC, configure subnets, r
 
 - Created 4 route tables (2 public, 2 private)
 - Associated subnets accordingly
-![alt text](image-1.png)
+![vpc.png](./Images/vpc_network_project/vpc.png)
 
 ### 5. EC2 Instance
 
 - Launched EC2 instance (Amazon Linux / Ubuntu)
 - Attached to Public Subnet 1 (e.g., `10.0.1.0/24`)
 - Enabled auto-assigned **Public IP**
-![alt text](image-2.png)
+![instanct.png](./Images/vpc_network_project/instanct.png)
 
 ---
 
@@ -53,11 +53,11 @@ To create a fully functional virtual network using AWS VPC, configure subnets, r
 ```bash
 python3 -m http.server 9000
 ```
-![alt text](image-3.png)
+![session.png](./Images/vpc_network_project/session.png)
 
 - Tried accessing `http://<EC2_Public_IP>:9000` from browser
 
-![alt text](image-4.png)
+![browsr.png](./Images/vpc_network_project/browsr.png)
 
 Initially, access **denied** due to default security restrictions.
 
@@ -69,16 +69,16 @@ Initially, access **denied** due to default security restrictions.
 
 - Edited NACL associated with subnet to allow **port 9000** inbound from `0.0.0.0/0`
 - Also added outbound rule to allow ephemeral ports (1024-65535)
-![alt text](image-5.png)
+![NACL.png](./Images/vpc_network_project/NACL.png)
 
 ### B. Security Group Inbound Rule
 
 - Edited security group associated with EC2 instance
 - Allowed inbound TCP traffic on **port 9000** from `0.0.0.0/0`
-![alt text](image-6.png)
+![SG.png](./Images/vpc_network_project/SG.png)
 
 ✅ Now, browser can successfully access the application at: `http://<Public-IP>:9000`
-![alt text](image-7.png)
+![brwsr.png](./Images/vpc_network_project/brwsr.png)
 
 ---
 
@@ -107,4 +107,3 @@ Initially, access **denied** due to default security restrictions.
 > A complete end-to-end setup to understand how cloud networking and security controls work in real AWS environments. This project can be reused as a foundational template for deploying containerized or scalable applications.
 
 ---
-

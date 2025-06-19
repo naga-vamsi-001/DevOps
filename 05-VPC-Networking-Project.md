@@ -9,7 +9,7 @@ This document demonstrates a hands-on AWS project where a custom **VPC**, **EC2*
 ### Goal
 
 To create a fully functional virtual network using AWS VPC, configure subnets, route tables, EC2 instance, and secure it using NACLs and Security Groups.
-![arch.png](../Images/vpc_network_project/arch.png)
+![arch.png](https://raw.githubusercontent.com/naga-vamsi-001/Images/main/vpc_network_project/arch.png)
 
 ---
 
@@ -34,14 +34,14 @@ To create a fully functional virtual network using AWS VPC, configure subnets, r
 
 - Created 4 route tables (2 public, 2 private)
 - Associated subnets accordingly
-![vpc.png](../Images/vpc_network_project/vpc.png)
+![vpc.png](https://raw.githubusercontent.com/naga-vamsi-001/Images/main/vpc_network_project/vpc.png)
 
 ### 5. EC2 Instance
 
 - Launched EC2 instance (Amazon Linux / Ubuntu)
 - Attached to Public Subnet 1 (e.g., `10.0.1.0/24`)
 - Enabled auto-assigned **Public IP**
-![instanct.png](../Images/vpc_network_project/instanct.png)
+![instanct.png](https://raw.githubusercontent.com/naga-vamsi-001/Images/main/vpc_network_project/instanct.png)
 
 ---
 
@@ -53,11 +53,11 @@ To create a fully functional virtual network using AWS VPC, configure subnets, r
 ```bash
 python3 -m http.server 9000
 ```
-![session.png](../Images/vpc_network_project/session.png)
+![session.png](https://raw.githubusercontent.com/naga-vamsi-001/Images/main/vpc_network_project/session.png)
 
 - Tried accessing `http://<EC2_Public_IP>:9000` from browser
 
-![browsr.png](../Images/vpc_network_project/browsr.png)
+![browsr.png](https://raw.githubusercontent.com/naga-vamsi-001/Images/main/vpc_network_project/browsr.png)
 
 Initially, access **denied** due to default security restrictions.
 
@@ -69,16 +69,16 @@ Initially, access **denied** due to default security restrictions.
 
 - Edited NACL associated with subnet to allow **port 9000** inbound from `0.0.0.0/0`
 - Also added outbound rule to allow ephemeral ports (1024-65535)
-![NACL.png](../Images/vpc_network_project/NACL.png)
+![NACL.png](    https://raw.githubusercontent.com/naga-vamsi-001/Images/main/vpc_network_project/NACL.png)
 
 ### B. Security Group Inbound Rule
 
 - Edited security group associated with EC2 instance
 - Allowed inbound TCP traffic on **port 9000** from `0.0.0.0/0`
-![SG.png](../Images/vpc_network_project/SG.png)
+![SG.png](https://raw.githubusercontent.com/naga-vamsi-001/Images/main/vpc_network_project/SG.png)
 
 ✅ Now, browser can successfully access the application at: `http://<Public-IP>:9000`
-![brwsr.png](../Images/vpc_network_project/brwsr.png)
+![brwsr.png](https://raw.githubusercontent.com/naga-vamsi-001/Images/main/vpc_network_project/brwsr.png)
 
 ---
 

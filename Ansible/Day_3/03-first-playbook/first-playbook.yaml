@@ -1,0 +1,31 @@
+---
+# Start of YAML document
+
+- name: Install Apache and copy index file   # This is the play name
+  hosts: all                                 # Run this play on all hosts from inventory
+  become: true                               # Use sudo/root privileges to run the tasks
+
+  tasks:                                     # List of tasks to execute
+
+    - name: Install apache2                  # Task 1: install Apache package
+      ansible.builtin.apt:                   # Ansible built-in apt module for Debian/Ubuntu
+        name: apache2                        # Package name to install
+        state: present                       # present = install, absent = uninstall/remove
+        update_cache: yes                    # Update apt package cache before installation
+
+    - name: Copy index.html file             # Task 2: copy HTML file to web server folder
+      ansible.builtin.copy:                  # Ansible built-in copy module
+        src: index.html                      # Source file from Ansible control node
+        dest: /var/www/html/index.html       # Destination path on managed node
+        owner: root                          # File owner will be root
+        group: root                          # File group will be root
+        mode: '0644'                         # File permissions: owner rw, group r, others r
+
+    - name: Ensure apache2 service is running # Task 3: make sure Apache service is started
+      ansible.builtin.service:                # Ansible built-in service module
+        name: apache2                         # Service name
+        state: started                        # Start the service if it is not running
+        enabled: true                         # Enable service to start automatically after reboot
+
+# A YAML linter helps keep YAML files clean and consistent.
+# A YAML validator checks whether the YAML is actually valid and can be parsed correctly.

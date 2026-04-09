@@ -5,6 +5,6 @@ provider "aws" {
 resource "aws_instance" "example" {
     ami           = "ami-0ec10929233384c7f"  # Specify an appropriate AMI ID
     instance_type = "t2.micro"
-    subnet_id = "subnet-00a759e414ba005a0"
-    key_name = "Ansible_key"
+    subnet_id = "subnet-ID"  #Subnet_ID
+    key_name = "Example" #provide key pair
 }
